@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <div className="flex flex-col">
       {/* Navbar */}
-      <div className="bg-white flex flex-row justify-between px-10 z-10 shadow shadow-black/5">
+      <div className="bg-white flex flex-row justify-between px-10 z-20 shadow shadow-black/5">
         {/* Left Side of Navbar */}
         <div className="flex flex-row items-center gap-8 w-1/3">
           <button type="button" className="group relative w-6 h-6 " onClick={() => setToggle("menu")}>
@@ -69,7 +69,7 @@ const Navbar = () => {
         {/* Middle Of navbar === Brand Logo */}
         <a href="#" className="flex w-1/3 justify-center py-3">
           {" "}
-          <img className="w-1/2" src="https://wovenmagazine.com/content/themes/woven/assets/svg/logo.svg" alt="" />
+          <img className="w-1/2 h-6" src="https://wovenmagazine.com/content/themes/woven/assets/svg/logo.svg" alt="" />
         </a>
 
         {/* Left Side of Navbar */}
@@ -136,7 +136,7 @@ const Navbar = () => {
 
       {/* Shop */}
       <div
-        className={showShop ? "bg-gray-900 w-full flex flex-col transition duration-300 ease-in-out" : "-translate-y-[20rem] transition duration-300 ease-in-out"}
+        className={showShop ? "bg-gray-900 w-full flex flex-col transition duration-300 ease-in-out z-10" : "-translate-y-[40rem] transition duration-300 ease-in-out"}
         onMouseEnter={() => setShowShop(true)}
         onMouseLeave={() => setShowShop(false)}
       >
