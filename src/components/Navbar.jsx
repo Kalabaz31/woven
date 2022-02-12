@@ -27,9 +27,8 @@ const Navbar = () => {
       setShowCart(!showCart);
     }
   };
-
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col fixed w-full z-10">
       {/* Navbar */}
       <div className="bg-white flex flex-row justify-between px-10 z-20 shadow shadow-black/5">
         {/* Left Side of Navbar */}
@@ -87,11 +86,11 @@ const Navbar = () => {
       <div
         className={
           showMenu
-            ? " w-full h-full fixed bg-white/90 flex flex-col justify-center transtion duration-500 ease-in-out "
+            ? " w-full h-full fixed bg-white/90 flex flex-col justify-center transtion duration-500 ease-in-out gap-10 z-10"
             : "w-full h-full fixed bg-white/90 flex flex-col justify-center invisible opacity-0 transtion duration-300 ease-in-out"
         }
       >
-        <div className="h-2/3 flex flex-col justify-center gap-5">
+        <div className="flex flex-col justify-center gap-5 z-0">
           <div className="flex flex-col">
             <span className="italic text-green-500">.01</span>{" "}
             <a href="" className="text-3xl font-medium tracking-[4px] text-zinc-400/60 hover:text-black transition duration-300 ease-in-out">
@@ -124,7 +123,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="h-1/3 flex flex-col  items-center gap-5">
+        <div className="flex flex-col  items-center gap-5">
           <button className="py-3 px-6 bg-green-500/75 text-neutral-100 font-medium text-xs w-max tracking-[2px]"> REQUEST INTERVIEW</button>
           <div className="flex flex-row gap-12 text-sm text-neutral-700">
             <a href="">twitter</a>
@@ -136,11 +135,11 @@ const Navbar = () => {
 
       {/* Shop */}
       <div
-        className={showShop ? "bg-gray-900 w-full flex flex-col transition duration-300 ease-in-out z-10" : "-translate-y-[40rem] transition duration-300 ease-in-out"}
+        className={showShop ? "relative bg-gray-900 w-full flex flex-col transition duration-300 ease-in-out z-10" : "-translate-y-[40rem] transition duration-300 ease-in-out"}
         onMouseEnter={() => setShowShop(true)}
         onMouseLeave={() => setShowShop(false)}
       >
-        <div className="flex flex-row overflow-hidden ">
+        <div className="flex flex-row overflow-hidden absolute ">
           <div className="group w-1/4 relative  ">
             <img className="h-full" src="https://wovenmagazine.com/content/uploads/2018/11/Issue4_Cover_Dropdown-640x640.jpg" alt="" />
             <a href="" className="absolute left-0 top-0 flex flex-col justify-center invisible group-hover:visible h-full w-full bg-white/90 z-10 ">
@@ -173,14 +172,20 @@ const Navbar = () => {
       </div>
 
       {/* Search */}
+      {/* 
+      { 
+          showSearch
+            ? " w-full h-full fixed bg-white/90 flex flex-row  transition duration-500 delay-300 ease-in-out items-center justify-center px-20 gap-2"
+            : " w-full h-full fixed bg-white/90 flex flex-row  transition duration-500  ease-in-out items-center justify-center px-20 gap-2 opacity-0"
+        } */}
       <div
         className={
           showSearch
-            ? " w-full h-full fixed bg-white/90 flex flex-row  transtion duration-500 ease-in-out items-center justify-center px-20 gap-2"
-            : " w-full h-full fixed bg-white/90 flex flex-row  transtion duration-500 ease-in-out items-center justify-center px-20 gap-2 invisibile opacity-0"
+            ? " w-full h-full fixed bg-white/90 flex flex-row  scale-100 transition-opacity duration-300 ease-in-out items-center justify-center px-20 gap-2"
+            : " w-full h-full fixed bg-white/90 flex flex-row items-center justify-center px-20 gap-2 search search-hide"
         }
       >
-        <input type="text" placeholder="Search Woven + Hit Enter" className="outline-none text-xl md:text-4xl md:w-2/3 py-2" />
+        <input type="text" placeholder="Search Woven + Hit Enter" className="outline-none text-xl bg-transparent md:text-4xl md:w-2/3 py-2" />
 
         <button className="border-green-600 border-2 px-4 py-2  text-green-600 text-xl font-bold"> > </button>
       </div>
@@ -196,7 +201,7 @@ const Navbar = () => {
           if (!cart.current.contains(e.target)) setToggle("cart");
         }}
       >
-        <div ref={cart} className="bg-white absolute md:right-[2rem] top-10 w-full md:w-[25rem] flex flex-col items-center gap-8 shadow  ">
+        <div ref={cart} className="bg-white absolute md:right-[2rem] top-10 w-full md:w-[25rem] flex flex-col items-center gap-8 shadow">
           <div className="border-b border-gray-200 w-full mt-10 flex flex-row gap-8 px-10 pb-6 items-center">
             <h1 className="text-3xl "> Your Cart</h1>
             <h1 className="text-lg text-gray-400 "> $0 USD</h1>
